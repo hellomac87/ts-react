@@ -19,7 +19,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [],
+  //   plugins: [new webpack.LoaderOptionsPlugin({ debug: true })],
   output: {
     filename: "app.js",
     path: path.join(__dirname, "dist")
