@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const rspCoords = {
   바위: "0",
@@ -24,7 +24,7 @@ const computerChoice = (imgCoords: ImgCoords) => {
 
 const RSP = () => {
   const [result, setResult] = useState("");
-  const [imgCoord, setImgCoord] = useState(rspCoords.바위);
+  const [imgCoord, setImgCoord] = useState<ImgCoords>(rspCoords.바위);
   const [score, setScore] = useState(0);
   const interval = useRef<number>();
 
@@ -49,11 +49,11 @@ const RSP = () => {
     }
   };
 
-  const onClickBtn = () => () => {
+  const onClickBtn = (choice: keyof typeof rspCoords) => () => {
     clearInterval(interval.current);
     const myScore = scores[choice];
     const cpuScore = scores[computerChoice(imgCoord)];
-    const diff = mySocre - cpuScore;
+    const diff = myScore - cpuScore;
 
     if (diff === 0) {
       setResult("비겼습니다!");
