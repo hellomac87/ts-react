@@ -107,7 +107,9 @@ const reducer = (state: ReducerState, action: ReducerActions): ReducerState => {
   }
 };
 const TicTacToe = () => {
-  const [state, dispatch] = useReducer(reducer, itnitialState);
+  const [state, dispatch] = useReducer<
+    React.Reducer<ReducerState, ReducerActions>
+  >(reducer, itnitialState);
   const { tableData, turn, winner, recentCell } = state;
 
   useEffect(() => {
