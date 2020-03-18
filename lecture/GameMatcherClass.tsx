@@ -7,7 +7,9 @@ import Lotto from "./Lotto";
 import { RouteComponentProps, RouteChildrenProps } from "react-router";
 import { withRouter } from "react-router-dom";
 
-class GameMatcher extends Component<RouteComponentProps<{ name: string }>> {
+class GameMatcherClass extends Component<
+  RouteComponentProps<{ name: string }>
+> {
   render() {
     if (!this.props.match) return <div>일치하는 게임이 없습니다.</div>;
 
@@ -29,4 +31,4 @@ class GameMatcher extends Component<RouteComponentProps<{ name: string }>> {
   }
 }
 
-export default withRouter(GameMatcher);
+export default withRouter(GameMatcherClass);

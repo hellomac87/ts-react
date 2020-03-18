@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
-import GameMatcher from "./GameMatcherClass";
+import GameMatcher from "./GameMatcher";
 
 const Games = () => {
   return (
@@ -13,11 +13,8 @@ const Games = () => {
       </div>
       <div>
         <Switch>
-          <Route exact path="/" render={props => <GameMatcher {...props} />} />
-          <Route
-            path="/game/:name"
-            render={props => <GameMatcher {...props} />}
-          />
+          <Route exact path="/" render={props => <GameMatcher />} />
+          <Route path="/game/:name" render={props => <GameMatcher />} />
         </Switch>
       </div>
     </BrowserRouter>
