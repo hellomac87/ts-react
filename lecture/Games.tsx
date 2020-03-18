@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
-import GameMatcher from "./GameMatcher";
+import GameMatcher from "./GameMatcherClass";
 
 const Games = () => {
   return (
