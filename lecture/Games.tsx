@@ -13,8 +13,8 @@ const Games = () => {
       </div>
       <div>
         <Switch>
-          <Route exact path="/" render={props => <GameMatcher />} />
-          <Route path="/game/:name" render={props => <GameMatcher />} />
+          <Route exact path="/" component={GameMatcher} />
+          <Route path="/game/:name" component={GameMatcher} />
         </Switch>
       </div>
     </BrowserRouter>
