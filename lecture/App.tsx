@@ -1,9 +1,22 @@
 import * as React from "react";
 import { Component } from "react";
+import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { logIn, logOut } from "./actions/user";
+import { UserState } from "./reducers/user";
 
-class App extends Component {
+import { RootState } from "./reducers";
+
+interface StateProps {
+  user: UserState;
+}
+
+interface DispatchProps {
+  dispatchLogIn: ({ id, password }: { id: string; password: string }) => void;
+  dispatchLogOut: () => void;
+}
+
+class App extends Component<StateProps & DispatchProps> {
   onClick = () => {
     this.props.dispatchLogIn({
       id: "dobby",
@@ -19,7 +32,7 @@ class App extends Component {
     const { user } = this.props;
     return (
       <div>
-        {user.isLoggingIn ? (
+        {user.isLogingIn ? (
           <div>로그인 중</div>
         ) : user.data ? (
           <div>{user.data.nickname}</div>
@@ -37,13 +50,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: RootState) => ({
   user: state.user,
   posts: state.posts
 });
 
-const mapDispatchToProps = dispatch => ({
-  dispatchLogIn: (data: { id; password }) => dispatch(logIn(data)),
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  dispatchLogIn: (data: { id: string; password: string }) =>
+    dispatch(logIn(data)),
   dispatchLogOut: () => dispatch(logOut())
 });
 
